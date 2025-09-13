@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessons - AI Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/tailwind.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'heading': ['Space Grotesk', 'sans-serif'],
+                        'body': ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#dc2626',
+                        secondary: '#f59e0b',
+                        accent: '#f59e0b',
+                        neutral: {
+                            50: '#fef2f2',
+                            100: '#f8fafc',
+                            700: '#374151',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-body bg-neutral-100 text-neutral-700">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h1 class="font-heading font-bold text-xl text-neutral-700">AI Tutor</h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 hover:text-primary transition-colors">Home</a>
+                    <a href="dashboard.html" class="text-neutral-700 hover:text-primary transition-colors">Dashboard</a>
+                    <a href="lessons.html" class="text-primary font-semibold">Lessons</a>
+                    <a href="progress.html" class="text-neutral-700 hover:text-primary transition-colors">Progress</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-neutral-700 hover:text-primary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                        <span class="text-white text-sm font-semibold">A</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="gradient-bg py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h2 class="font-heading font-bold text-4xl text-neutral-700 mb-4">
+                    Interactive Video Lessons
+                </h2>
+                <p class="text-lg text-neutral-700 max-w-2xl mx-auto">
+                    Learn at your own pace with our comprehensive video tutorials, interactive exercises, and personalized AI guidance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="py-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-4 mb-8">
+                <div class="flex-1">
+                    <input type="text" id="lesson-search" placeholder="Search lessons..." 
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent">
+                </div>
+                <div class="flex gap-2 flex-wrap">
+                    <button class="filter-btn bg-primary text-white px-4 py-2 rounded-lg font-semibold" data-filter="all">All</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300" data-filter="mathematics">Math</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300" data-filter="science">Science</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300" data-filter="languages">Languages</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300" data-filter="history">History</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Lessons Grid -->
+    <section class="py-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mathematics Lessons -->
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="mathematics">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Algebra Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-blue-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            Mathematics
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            15:30
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">Quadratic Equations Mastery</h3>
+                        <p class="text-neutral-700 mb-4">Learn to solve quadratic equations using multiple methods including factoring, completing the square, and the quadratic formula.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Intermediate</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="mathematics">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Calculus Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-blue-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            Mathematics
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            22:15
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">Introduction to Derivatives</h3>
+                        <p class="text-neutral-700 mb-4">Understand the fundamental concept of derivatives in calculus with practical examples and step-by-step solutions.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Advanced</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Science Lessons -->
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="science">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Chemistry Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            Science
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            18:45
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">Chemical Bonding Explained</h3>
+                        <p class="text-neutral-700 mb-4">Explore ionic, covalent, and metallic bonds through interactive 3D models and real-world examples.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Intermediate</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="science">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Physics Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            Science
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            25:20
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">Newton's Laws of Motion</h3>
+                        <p class="text-neutral-700 mb-4">Master the three fundamental laws of motion with interactive simulations and practical demonstrations.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Beginner</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Language Lessons -->
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="languages">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Spanish Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-purple-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            Languages
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            12:30
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">Spanish Conversation Basics</h3>
+                        <p class="text-neutral-700 mb-4">Practice essential Spanish phrases and conversation patterns with native speaker pronunciation guides.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Beginner</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="languages">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="French Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-purple-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            Languages
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            16:45
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">French Grammar Fundamentals</h3>
+                        <p class="text-neutral-700 mb-4">Learn essential French grammar rules including verb conjugations, gender agreements, and sentence structure.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Intermediate</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Lessons -->
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="history">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="History Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-orange-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            History
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            28:15
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">World War II Overview</h3>
+                        <p class="text-neutral-700 mb-4">Comprehensive overview of WWII causes, major events, and global impact through interactive timelines and maps.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Intermediate</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-subject="history">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=200&width=400" 
+                             alt="Ancient Rome Tutorial" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-white bg-opacity-90 rounded-full p-4 hover:bg-opacity-100 transition-all">
+                                <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-orange-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                            History
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+                            35:40
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading font-semibold text-xl text-neutral-700 mb-2">Ancient Roman Empire</h3>
+                        <p class="text-neutral-700 mb-4">Explore the rise and fall of the Roman Empire through virtual tours of ancient sites and historical reconstructions.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                <span class="text-sm text-neutral-700">Beginner</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span class="text-sm text-neutral-700">4.7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Video Section -->
+    <section class="py-16 px-4 gradient-bg">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="font-heading font-bold text-3xl text-neutral-700 mb-4">
+                    Featured Tutorial of the Week
+                </h3>
+                <p class="text-lg text-neutral-700 max-w-2xl mx-auto">
+                    Don't miss our specially curated lesson designed to challenge and inspire learners at all levels.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                    <div class="video-player relative">
+                        <img src="/placeholder.svg?height=300&width=800" 
+                             alt="Featured Tutorial" 
+                             class="w-full h-64 md:h-80 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <button class="play-btn bg-primary bg-opacity-90 rounded-full p-6 hover:bg-opacity-100 transition-all">
+                                <svg class="w-12 h-12 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-primary text-white px-3 py-2 rounded text-sm font-semibold">
+                            Featured
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded text-sm">
+                            42:30
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-heading font-bold text-2xl text-neutral-700 mb-4">AI-Powered Problem Solving Masterclass</h3>
+                        <p class="text-neutral-700 mb-6 leading-relaxed">
+                            Join our AI tutor for an interactive session on advanced problem-solving techniques that can be applied across all subjects. Learn how to break down complex problems, identify patterns, and develop systematic approaches to finding solutions.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                    <span class="text-sm text-neutral-700">Advanced</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="text-neutral-700">5.0 (2,847 reviews)</span>
+                                </div>
+                            </div>
+                            <button class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                                Start Watching
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../scripts/lessons.js"></script>
+</body>
+</html>
