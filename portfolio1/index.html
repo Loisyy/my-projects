@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+
+            --primary-purple: #885df1;
+            --primary-teal: #6BCBCE;
+            --dark-navy: #2c234d;
+            
+            /* Gradients */
+    
+            /* Semantic Colors */
+            --secondary-color: #5d2cd5;
+            --accent-color: #6BCBCE;
+    
+            
+            /* Text Colors */
+            --text-dark: #2D2E3F;
+            --text-medium: #6937be;
+            --text-light: #6b7482;
+            
+            /* Background Colors */
+            --bg-white: #ffffff;
+            --bg-light: #F8F9FA;
+            --bg-pink-light: #FFF5F8;
+            --bg-purple-light: #F5F3FF;
+            
+            /* Shadows */
+            --shadow-pink: rgba(255, 107, 157, 0.3);
+            --shadow-purple: rgba(167, 139, 250, 0.3);
+            --shadow-teal: rgba(107, 203, 206, 0.3);
+            --shadow-soft: rgba(45, 46, 63, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+           color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        /* Header Styles */
+        header {
+              background: linear-gradient(90deg, #851B41 0%, #6937BE 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: var(--shadow-purple);
+            text-decoration: underline;
+            font-weight: bold;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-medium);
+            text-align: center;
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-soft);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--text-medium);
+            box-shadow: 0 5px 20px var(--shadow-pink);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #f9f9f9;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px var(--shadow-soft);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .skill-item h4 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: white;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-soft);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h4 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Recommendations Section */
+        #recommendations {
+            background: #f9f9f9;
+        }
+
+        .recommendations-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .recommendation-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .recommendation-card p {
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-card h5 {
+            color: var(--text-dark);
+            text-align: right;
+        }
+
+        /* Recommendation Form */
+        .recommendation-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-soft);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .recommendation-form h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color:var(--primary-purple);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Home Icon */
+        .home-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-purple);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px var(--shadow-soft);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .home-icon:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Popup Modal */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-navy);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-content i {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .popup-content h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .popup-content p {
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .popup-btn {
+            padding: 0.8rem 2rem;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .popup-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Sarah Johnson</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#recommendations">Recommendations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-container">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400" alt="Sarah Johnson" class="profile-image">
+                <div class="about-text">
+                    <h3>Sarah Johnson</h3>
+                    <p>
+                        I'm a passionate full-stack developer with 3 years of experience building modern web applications. 
+                        I specialize in creating responsive, user-friendly interfaces and robust backend systems. 
+                        My journey in tech started with a curiosity about how websites work, and it has evolved into 
+                        a career where I get to solve complex problems and bring creative ideas to life. I'm always 
+                        eager to learn new technologies and collaborate with talented teams to build innovative solutions 
+                        that make a real impact.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <i class="fab fa-html5"></i>
+                    <h4>HTML5</h4>
+                    <p>Semantic markup and modern standards</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <h4>CSS3</h4>
+                    <p>Responsive design and animations</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-js"></i>
+                    <h4>JavaScript</h4>
+                    <p>ES6+ and modern frameworks</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-react"></i>
+                    <h4>React</h4>
+                    <p>Component-based UI development</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-node"></i>
+                    <h4>Node.js</h4>
+                    <p>Server-side JavaScript</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    <h4>MongoDB</h4>
+                    <p>NoSQL database management</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400" alt="E-commerce Platform">
+                    <div class="project-content">
+                        <h4>E-commerce Platform</h4>
+                        <p>A full-featured online shopping platform with payment integration, user authentication, and real-time inventory management built with React and Node.js.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400" alt="Task Management App">
+                    <div class="project-content">
+                        <h4>Task Management App</h4>
+                        <p>A collaborative task management tool with drag-and-drop functionality, team collaboration features, and progress tracking using React and Firebase.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400" alt="Weather Dashboard">
+                    <div class="project-content">
+                        <h4>Weather Dashboard</h4>
+                        <p>An interactive weather application providing real-time forecasts, historical data visualization, and location-based alerts using OpenWeather API and Chart.js.</p>
+                        <a href="#" class="project-link">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section -->
+        <section id="recommendations">
+            <h2>Recommendations</h2>
+            <div class="recommendations-container" id="recommendationsList">
+                <div class="recommendation-card">
+                    <p>"Sarah is an exceptional developer who consistently delivers high-quality work. Her attention to detail and problem-solving skills are outstanding. She's a valuable asset to any team."</p>
+                    <h5>- Michael Chen, Senior Developer at TechCorp</h5>
+                </div>
+                <div class="recommendation-card">
+                    <p>"Working with Sarah was a pleasure. She has excellent communication skills and always meets deadlines. Her technical expertise and creativity brought our project to the next level."</p>
+                    <h5>- Emily Rodriguez, Project Manager at WebSolutions</h5>
+                </div>
+                <div class="recommendation-card">
+                    <p>"Sarah's ability to quickly learn new technologies and adapt to changing requirements is impressive. She's proactive, reliable, and always willing to help team members."</p>
+                    <h5>- David Park, Lead Engineer at StartupHub</h5>
+                </div>
+            </div>
+
+            <!-- Recommendation Form -->
+            <div class="recommendation-form">
+                <h3>Leave a Recommendation</h3>
+                <form id="recommendationForm">
+                    <div class="form-group">
+                        <label for="recommenderName">Your Name</label>
+                        <input type="text" id="recommenderName" name="recommenderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recommendation">Your Recommendation</label>
+                        <textarea id="recommendation" name="recommendation" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Recommendation</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Home Icon -->
+    <a href="#about" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <!-- Popup Modal -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank You!</h3>
+            <p>Your recommendation has been successfully submitted.</p>
+            <button class="popup-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Handle recommendation form submission
+        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('recommenderName').value;
+            const recommendation = document.getElementById('recommendation').value;
+            
+            // Create new recommendation card
+            const recommendationCard = document.createElement('div');
+            recommendationCard.className = 'recommendation-card';
+            recommendationCard.innerHTML = `
+                <p>"${recommendation}"</p>
+                <h5>- ${name}</h5>
+            `;
+            
+            // Add to recommendations list
+            document.getElementById('recommendationsList').appendChild(recommendationCard);
+            
+            // Show popup
+            document.getElementById('popup').style.display = 'flex';
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Close popup function
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
