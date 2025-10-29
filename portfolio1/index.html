@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +12,25 @@
             --primary-purple: #885df1;
             --primary-teal: #6BCBCE;
             --dark-navy: #2c234d;
-            
+
             /* Gradients */
-    
+
             /* Semantic Colors */
             --secondary-color: #5d2cd5;
             --accent-color: #6BCBCE;
-    
-            
+
+
             /* Text Colors */
             --text-dark: #2D2E3F;
             --text-medium: #6937be;
             --text-light: #6b7482;
-            
+
             /* Background Colors */
             --bg-white: #ffffff;
             --bg-light: #F8F9FA;
             --bg-pink-light: #FFF5F8;
             --bg-purple-light: #F5F3FF;
-            
+
             /* Shadows */
             --shadow-pink: rgba(255, 107, 157, 0.3);
             --shadow-purple: rgba(167, 139, 250, 0.3);
@@ -46,20 +47,20 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-           color: var(--text-dark);
+            color: var(--text-dark);
             background: var(--bg-light);
         }
 
         /* Header Styles */
         header {
-              background: linear-gradient(90deg, #851B41 0%, #6937BE 100%);
+            background: linear-gradient(90deg, #851B41 0%, #6937BE 100%);
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
@@ -272,7 +273,7 @@
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             border-left: 4px solid var(--primary-purple);
         }
 
@@ -328,7 +329,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color:var(--primary-purple);
+            border-color: var(--primary-purple);
         }
 
         .form-group textarea {
@@ -405,6 +406,7 @@
                 transform: translateY(-50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -463,6 +465,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -484,15 +487,20 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="about-container">
-                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/329/original/onjacket.jpg?1761729955" alt="Nkeiru Lois" class="profile-image">
+                <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/329/original/onjacket.jpg?1761729955"
+                    alt="Nkeiru Lois" class="profile-image">
                 <div class="about-text">
                     <h3>Nkeiru Lois</h3>
                     <p>
-                        I'm a passionate Frontend Engineer and a Certified Google UX/UI designer whose experience spans across creating user friendly interfaces, conducting user research, building modern web applications. 
-                        I specialize in creating responsive, user-centered interfaces and robust systems as well as 3D modelling deisgns.
-                        My journey in tech started with a curiosity about how websites work, and it has evolved into 
-                        a career where I get to solve complex problems and bring creative ideas to life. I'm always 
-                        eager to learn new technologies and collaborate with talented teams to build innovative solutions 
+                        I'm a passionate Frontend Engineer and a Certified Google UX/UI designer whose experience spans
+                        across creating user friendly interfaces, conducting user research, building modern web
+                        applications.
+                        I specialize in creating responsive, user-centered interfaces and robust systems as well as 3D
+                        modelling deisgns.
+                        My journey in tech started with a curiosity about how websites work, and it has evolved into
+                        a career where I get to solve complex problems and bring creative ideas to life. I'm always
+                        eager to learn new technologies and collaborate with talented teams to build innovative
+                        solutions
                         that make a real impact.
                     </p>
                 </div>
@@ -524,6 +532,11 @@
                     <p>Component-based UI development</p>
                 </div>
                 <div class="skill-item">
+                    <i class="fab fa-git-alt"></i>
+                    <h4>Git & Version Control</h4>
+                    <p>Collaboration and code management using Git</p>
+                </div>
+                <div class="skill-item">
                     <i class="fas fa-pencil-ruler"></i>
                     <h4>UX/UI</h4>
                     <p>User Experience researcher</p>
@@ -541,23 +554,28 @@
             <h2>Projects</h2>
             <div class="projects-container">
                 <div class="project-card">
-                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/330/original/scholarmatch.png?1761730801" alt="Scholarships Platform">
+                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/330/original/scholarmatch.png?1761730801"
+                        alt="Scholarships Platform">
                     <div class="project-content">
                         <h4>ScholarMatch</h4>
-                        <p>A digital platform that connects learners with scholarships, internships, and grants tailored to their skills and goals.</p>
+                        <p>A digital platform that connects learners with scholarships, internships, and grants tailored
+                            to their skills and goals.</p>
                         <a href="https://scholarmatch-3p64.vercel.app/" class="project-link">View Project</a>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/331/original/PLP.png?1761731141" alt="EcoStitch">
+                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/331/original/PLP.png?1761731141"
+                        alt="EcoStitch">
                     <div class="project-content">
                         <h4> EcoStitch</h4>
-                        <p>EcoStitch empowers designers and enthusiasts to give new life to discarded fabrics, fostering creativity and sustainability.</p>
+                        <p>EcoStitch empowers designers and enthusiasts to give new life to discarded fabrics, fostering
+                            creativity and sustainability.</p>
                         <a href="https://power-learn-project-it1o.vercel.app/" class="project-link">View Project</a>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/332/original/sub.png?1761731749" alt="Weather Dashboard">
+                    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/175/332/original/sub.png?1761731749"
+                        alt="Weather Dashboard">
                     <div class="project-content">
                         <h4>Biology Subject</h4>
                         <p>Exploring the fascinating world of life, from microscopic cells to vast ecosystems</p>
@@ -572,15 +590,18 @@
             <h2>Recommendations</h2>
             <div class="recommendations-container" id="recommendationsList">
                 <div class="recommendation-card">
-                    <p>"Lois is an exceptional developer who consistently delivers high-quality work. Her attention to detail and problem-solving skills are outstanding. She's a valuable asset to any team."</p>
+                    <p>"Lois is an exceptional developer who consistently delivers high-quality work. Her attention to
+                        detail and problem-solving skills are outstanding. She's a valuable asset to any team."</p>
                     <h5>- Kessiena Obehi, Frontend Developer ALX</h5>
                 </div>
                 <div class="recommendation-card">
-                    <p>"Working with Lois was a pleasure. She has excellent communication skills and always meets deadlines. Her technical expertise and creativity brought our project to the next level."</p>
+                    <p>"Working with Lois was a pleasure. She has excellent communication skills and always meets
+                        deadlines. Her technical expertise and creativity brought our project to the next level."</p>
                     <h5>- Emily Williams, Project Manager at ALX</h5>
                 </div>
                 <div class="recommendation-card">
-                    <p>"Lois' ability to quickly learn new technologies and adapt to changing requirements is impressive. She's proactive, reliable, and always willing to help team members."</p>
+                    <p>"Lois' ability to quickly learn new technologies and adapt to changing requirements is
+                        impressive. She's proactive, reliable, and always willing to help team members."</p>
                     <h5>- David Emeka, Lead Engineer at StartupHub</h5>
                 </div>
             </div>
@@ -620,12 +641,12 @@
 
     <script>
         // Handle recommendation form submission
-        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
+        document.getElementById('recommendationForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const name = document.getElementById('recommenderName').value;
             const recommendation = document.getElementById('recommendation').value;
-            
+
             // Create new recommendation card
             const recommendationCard = document.createElement('div');
             recommendationCard.className = 'recommendation-card';
@@ -633,13 +654,13 @@
                 <p>"${recommendation}"</p>
                 <h5>- ${name}</h5>
             `;
-            
+
             // Add to recommendations list
             document.getElementById('recommendationsList').appendChild(recommendationCard);
-            
+
             // Show popup
             document.getElementById('popup').style.display = 'flex';
-            
+
             // Reset form
             this.reset();
         });
@@ -664,4 +685,5 @@
         });
     </script>
 </body>
+
 </html>
