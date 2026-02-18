@@ -15,7 +15,7 @@ export default function Hero() {
           onClick={() => navigate('/gallery')}
           className="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-lg transition-colors font-semibold"
         >
-          View My Work
+          View More Works
         </button>
       </div>
     </section>

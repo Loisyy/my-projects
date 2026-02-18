@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Location</h4>
-            <p className="text-sm">Toronto, Canada<br />Available Globally</p>
+            <p className="text-sm">Abuja, <Nigeria></Nigeria><br />Available Globally</p>
           </div>
         </div>
         <div className="text-center text-sm">

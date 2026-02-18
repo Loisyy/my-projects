@@ -29,13 +29,30 @@ export default function Contact() {
               </div>
             </div>
           </div>
+<form className="space-y-4">
+  <input
+    type="text"
+    placeholder="Your Name"
+    className="w-full border border-pink-200 px-4 py-3 rounded-lg focus:outline-none focus:border-pink-600 text-gray-900 placeholder-gray-500"
+  />
+  <input
+    type="email"
+    placeholder="Your Email"
+    className="w-full border border-pink-200 px-4 py-3 rounded-lg focus:outline-none focus:border-pink-600 text-gray-900 placeholder-gray-500"
+  />
+  <textarea
+    placeholder="Your Message"
+    rows={4}
+    className="w-full border border-pink-200 px-4 py-3 rounded-lg focus:outline-none focus:border-pink-600 text-gray-900 placeholder-gray-500 resize-none"
+  />
+  <a
+    href="mailto:loisnyksdesign@yahoo.com?subject=Portfolio Inquiry&body=Hi Lois, "
+    className="w-full block text-center bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-lg transition-colors font-semibold"
+  >
+    Send Message
+  </a>
+</form>
 
-          <form className="space-y-4">
-            <input type="text" placeholder="Your Name" className="w-full border border-pink-200 px-4 py-3 rounded-lg focus:outline-none focus:border-pink-600 text-gray-900 placeholder-gray-500" />
-            <input type="email" placeholder="Your Email" className="w-full border border-pink-200 px-4 py-3 rounded-lg focus:outline-none focus:border-pink-600 text-gray-900 placeholder-gray-500" />
-            <textarea placeholder="Your Message" rows={4} className="w-full border border-pink-200 px-4 py-3 rounded-lg focus:outline-none focus:border-pink-600 text-gray-900 placeholder-gray-500 resize-none" />
-            <button className="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-lg transition-colors font-semibold">Send Message</button>
-          </form>
         </div>
 
         <SocialMedia />
