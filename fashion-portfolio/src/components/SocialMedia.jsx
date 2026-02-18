@@ -13,9 +13,9 @@ export default function SocialMedia() {
     { name: "LinkedIn", url: "https://www.linkedin.com/in/nkeirulois", icon: linkedinIcon },
     { name: "Pinterest", url: "https://pin.it/50nse2368", icon: pinterestIcon },
     { name: "Facebook", url: "https://www.facebook.com/lois.nkeiru", icon: facebookIcon },
-    {name: "WhatsApp", url: "https://wa.me/2347084350700",icon: whatsappIcon, },
-    { name: "Youtube", url: "https://youtu.be/oPHN08u0Mus", icon: youtubeIcon },
-    { name: "TikTok", url: "http://tiktok.com/@loisnyksdesign", icon: tiktokIcon },
+    {name: "WhatsApp", url: "https://wa.me/2347084350700", icon: whatsappIcon},
+    { name: "Youtube", url: "https://youtu.be/oPHN08u0Mus", icon: youtubeIcon},
+    { name: "TikTok", url: "http://tiktok.com/@loisnyksdesign", icon: tiktokIcon},
     {name: "Email", url: "mailto:loisnyksdesign@yahoo.com", icon: yahoomailIcon},
   ];
 
