@@ -13,7 +13,7 @@ export default function Gallery({ onSelectImage }) {
 
   const menuItems = ['back home'];
 
-  const categories = ['All', 'Couture', 'Corsets', 'Patterns', 'Design', 'Sketches'];
+  const categories = ['All', 'Couture', 'Corsets', 'Patterns', 'Ankara',];
 
   const filteredItems = selectedCategory === 'All'
     ? galleryItems

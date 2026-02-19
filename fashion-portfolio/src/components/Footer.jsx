@@ -1,11 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-pink-900 text-gray-300 py-12 px-6">
+    <footer className="bg-gradient-to-r from-gray-900 to-pink-600 text-gray-300 py-12 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-gray-700">
           <div>
             <h4 className="font-semibold text-white mb-4">Loisnyks Design</h4>
-            <p className="text-sm">Crafting elegant fashion with innovation and precision</p>
+            <p className="text-sm">Designing a sustainable future</p>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
